@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "/home/ubuntu/.local/share/virtualenvs/gofishing-80GdpJ_9/bin/python",
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.globalModuleInstallation": true,
+}
