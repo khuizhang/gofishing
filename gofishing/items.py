@@ -8,7 +8,16 @@
 import scrapy
 
 
-class GofishingItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class Station(scrapy.Item):
+    station_id = scrapy.Field()
+    station_url = scrapy.Field()
+    site = scrapy.Field()
+    province = scrapy.Field()
+    latitude = scrapy.Field()
+    longitude = scrapy.Field()
+
+
+class Area(scrapy.Item):
+    area_id = scrapy.Field()
+    area_description = scrapy.Field()
+    area_url = scrapy.Field()
