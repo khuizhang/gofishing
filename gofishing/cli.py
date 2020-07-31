@@ -42,7 +42,7 @@ def tide(check):
                 if row["site"].lower() == location.lower():
                     station_url = station_url_prefix + row["station_id"]
         tide_crawler = CrawlerProcess()
-        tide_crawler.crawl(TideSpider, start_urls=[station_url], date=date)
+        tide_crawler.crawl(TideSpider, start_url=station_url, date=date)
         tide_crawler.start()
     else:
         if os.path.isfile(stations_csv):

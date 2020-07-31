@@ -12,6 +12,7 @@ class TideSpider(scrapy.Spider):
 
     def __init__(self, *args, **kwargs):
         super(TideSpider, self).__init__(*args, **kwargs)
+        self.start_urls = [kwargs.get("start_url")]
 
     # example url from cli: start_urls = ["https://tides.gc.ca/eng/data/table/2020/wlev_sec/7577"]
 
