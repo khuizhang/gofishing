@@ -14,7 +14,16 @@ $ python3 --version
 $ pip3 uninstall gofishing
 
 ## Usage
-1. list stations and IDs
-2. check tide info by station
-3. list management areas for fishery
-4. check notice for certain harvest restriction
+
+1. tide
+    parse the list of stations out of https://tides.gc.ca/eng/station/list, and save to /tmp/stations.csv
+    given station location and date, print tide predictions 
+2. area
+    parse the list of stations out of https://www.pac.dfo-mpo.gc.ca/fm-gp/maps-cartes/areas-secteurs/index-eng.html, and save to /tmp/areas.csv
+    given a combo of 'name, category', print the following: 
+        * area maps link: https://www.pac.dfo-mpo.gc.ca/fm-gp/rec/tidal-maree/a-s<area_id>-eng.html (special example, area 21/22 is using id 21 for map)
+        * get protected areas, and put it into a csv file for all areas. (subarea_id, type, closure_name, closure_map)
+        * contamination info: subarea_id, sanitory closure name, closure type, closure map link
+        * species regulation: species 
+        * latest fishery notice for any restriction of this species in this area. 
+   

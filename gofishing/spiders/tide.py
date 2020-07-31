@@ -1,3 +1,4 @@
+from os import name
 import scrapy
 import datetime
 
@@ -8,6 +9,11 @@ class TideSpider(scrapy.Spider):
     custom_settings = {
         "LOG_ENABLED": False,
     }
+
+    def __init__(self, *args, **kwargs):
+        super(TideSpider, self).__init__(*args, **kwargs)
+
+    # example url from cli: start_urls = ["https://tides.gc.ca/eng/data/table/2020/wlev_sec/7577"]
 
     def parse(self, response):
         target_month, target_day = self.date.split("/")

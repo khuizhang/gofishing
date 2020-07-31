@@ -65,7 +65,7 @@ def tide(check):
 )
 def area(check):
     areas_csv = "/tmp/areas.csv"
-
+    """
     if check:
         # tide table url for a station: https://www.pac.dfo-mpo.gc.ca/fm-gp/rec/tidal-maree/a-s17-eng.html
 
@@ -82,3 +82,4 @@ def area(check):
             station_crawler = CrawlerProcess()
             station_crawler.crawl(AreaSpider)
             station_crawler.start()
+    """
