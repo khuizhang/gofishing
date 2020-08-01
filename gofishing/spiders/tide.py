@@ -1,20 +1,30 @@
-from os import name
+import csv
 import scrapy
 import datetime
+from gofishing import stations_csv
 
 
 class TideSpider(scrapy.Spider):
     name = "tide"
     allowed_domains = ["tides.gc.ca"]
     custom_settings = {
-        "LOG_ENABLED": False,
+        "LOG_ENABLED": True,
     }
 
-    def __init__(self, *args, **kwargs):
-        super(TideSpider, self).__init__(*args, **kwargs)
-        self.start_urls = [kwargs.get("start_url")]
-
-    # example url from cli: start_urls = ["https://tides.gc.ca/eng/data/table/2020/wlev_sec/7577"]
+    def __init__(self, location="", **kwargs):
+        now = datetime.datetime.now()
+        current_year = now.year
+        station_url_prefix = (
+            "https://tides.gc.ca/eng/data/table/" + str(current_year) + "/wlev_sec/"
+        )
+        station_url = ""
+        stations_dict = csv.DictReader(open(stations_csv))
+        for row in stations_dict:
+            if row["site"].lower() == location.lower():
+                station_url = station_url_prefix + row["station_id"]
+        self.start_urls = [station_url]
+        super().__init__(**kwargs)
+        # example url from cli: start_urls = ["https://tides.gc.ca/eng/data/table/2020/wlev_sec/7577"]
 
     def parse(self, response):
         target_month, target_day = self.date.split("/")

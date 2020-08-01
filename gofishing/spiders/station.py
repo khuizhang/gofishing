@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-import scrapy
+from scrapy import Spider
 
 from gofishing.items import Station
 
 
-class StationSpider(scrapy.Spider):
+class StationSpider(Spider):
     name = "station"
     allowed_domains = ["tides.gc.ca"]
     start_urls = ["https://tides.gc.ca/eng/station/list"]
